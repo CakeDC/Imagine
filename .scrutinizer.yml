@@ -1,0 +1,36 @@
+build:
+    nodes:
+        analysis:
+            environment:
+                php:
+                    version: 7.1
+            project_setup:
+                override:
+                    - 'true'
+            tests:
+                override:
+                    - php-scrutinizer-run
+                    -
+                       command: './vendor/bin/phpunit --coverage-clover=coverage.xml'
+                       coverage:
+                           file: 'coverage.xml'
+                           format: 'php-clover'
+        tests71:
+            environment:
+                php:
+                    version: 7.1
+        tests72:
+            environment:
+                php:
+                    version: 7.2
+        tests73:
+            environment:
+                php:
+                    version: 7.3
+filter:
+    excluded_paths:
+        - 'tests/*'
+checks:
+    php: true
+coding_style:
+    php: {  }
